@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PuffZero — Buianto Sodnomov</title>
+  <meta name="description" content="Case study: PuffZero, a cross-platform quit-vaping tracker app published on the App Store.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="../index.html" class="nav__logo">Buianto Sodnomov</a>
+      <div class="nav__links">
+        <a href="../index.html" class="nav__link">Work</a>
+        <a href="../about.html" class="nav__link">About</a>
+        <a href="https://github.com/reberie" target="_blank" rel="noopener" class="nav__link">GitHub</a>
+        <a href="mailto:bsodnomovv@gmail.com" class="btn btn--secondary" style="padding: 0.5rem 1.25rem;">Get in touch</a>
+      </div>
+      <button class="nav__toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <a href="../index.html" class="back-link">&larr; Back to projects</a>
+
+    <!-- Hero -->
+    <section class="case-hero">
+      <span class="label case-hero__label fade-in">Mobile App &middot; Personal Project</span>
+      <h1 class="case-hero__title fade-in">PuffZero</h1>
+
+      <div class="case-hero__meta fade-in">
+        <div class="case-hero__meta-item">
+          <span class="label case-hero__meta-label">Timeline</span>
+          <span class="case-hero__meta-value">Feb 2024 — Aug 2024</span>
+        </div>
+        <div class="case-hero__meta-item">
+          <span class="label case-hero__meta-label">Role</span>
+          <span class="case-hero__meta-value">Solo Developer</span>
+        </div>
+        <div class="case-hero__meta-item">
+          <span class="label case-hero__meta-label">Stack</span>
+          <span class="case-hero__meta-value">React Native, Expo</span>
+        </div>
+        <div class="case-hero__meta-item">
+          <span class="label case-hero__meta-label">Status</span>
+          <span class="case-hero__meta-value"><a href="https://apps.apple.com/ca/app/puff-zero-quit-vaping-tracker/id6746369660" target="_blank" rel="noopener">Live on App Store &rarr;</a></span>
+        </div>
+      </div>
+
+      <p class="case-hero__summary fade-in">A cross-platform mobile app that helps users track and quit vaping. Designed with a collaborating designer, built end-to-end, and published to the Apple App Store.</p>
+    </section>
+
+    <!-- Screenshot placeholder -->
+    <div class="case-image fade-in">
+      <div class="placeholder-img" style="aspect-ratio: 16/9;">App screenshots coming soon</div>
+    </div>
+
+    <!-- Problem -->
+    <section class="case-section fade-in">
+      <span class="label case-section__label">01</span>
+      <h2 class="case-section__title">Problem & Context</h2>
+      <div class="case-section__body">
+        <p>Vaping has become a widespread habit, especially among young adults, but most quitting tools are either overly clinical or designed for cigarette smokers. There was a gap for a modern, approachable app that specifically targets vaping habits.</p>
+        <p>I wanted to build something that was genuinely useful — not just a timer, but a tool that helps users understand their patterns, stay motivated, and see real progress.</p>
+      </div>
+    </section>
+
+    <!-- Role -->
+    <section class="case-section section--surface-low fade-in" style="padding-left: var(--space-lg); padding-right: var(--space-lg); border-radius: var(--radius-md);">
+      <span class="label case-section__label">02</span>
+      <h2 class="case-section__title">My Role & Contributions</h2>
+      <div class="case-section__body">
+        <ul>
+          <li>Sole developer — designed the architecture, wrote all code, handled deployment</li>
+          <li>Collaborated with a designer on the UI, iterating based on product needs and technical constraints</li>
+          <li>Managed the full App Store submission and review process</li>
+          <li>Handled API integrations, local data persistence, and cross-platform compatibility</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Technical Decisions -->
+    <section class="case-section fade-in">
+      <span class="label case-section__label">03</span>
+      <h2 class="case-section__title">Key Technical Decisions</h2>
+      <div class="case-section__body">
+        <div class="decision-card">
+          <div class="decision-card__title">React Native + Expo over native Swift/Kotlin</div>
+          <p class="decision-card__text">As a solo developer targeting both platforms, cross-platform made sense. Expo's managed workflow significantly reduced build and deployment complexity. The tradeoff was less access to native APIs, but for this use case, it wasn't a blocker.</p>
+        </div>
+        <div class="decision-card">
+          <div class="decision-card__title">Local-first data storage</div>
+          <p class="decision-card__text">Health and habit data is sensitive. Keeping data on-device by default was both a privacy-first decision and a way to simplify the architecture — no backend to build or maintain for v1.</p>
+        </div>
+        <div class="decision-card">
+          <div class="decision-card__title">Iterative UI with a designer</div>
+          <p class="decision-card__text">Rather than fully speccing the UI upfront, we iterated in short cycles — designer would propose a direction, I'd build it, and we'd adjust based on what felt right in-hand. This kept the product grounded.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Challenges -->
+    <section class="case-section section--surface-low fade-in" style="padding-left: var(--space-lg); padding-right: var(--space-lg); border-radius: var(--radius-md);">
+      <span class="label case-section__label">04</span>
+      <h2 class="case-section__title">Challenges & Tradeoffs</h2>
+      <div class="case-section__body">
+        <ul>
+          <li><strong>App Store review process</strong> — Navigating Apple's guidelines for the first time required multiple submission iterations. Each rejection was a learning moment in understanding platform requirements.</li>
+          <li><strong>Cross-platform consistency</strong> — Ensuring the UI felt native on both iOS and Android meant handling platform-specific quirks in navigation, notifications, and layout.</li>
+          <li><strong>Scope management</strong> — As a solo project, I had to be disciplined about cutting features that were nice-to-have but would delay shipping. V1 focused on the core tracking loop.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Learnings -->
+    <section class="case-section fade-in">
+      <span class="label case-section__label">05</span>
+      <h2 class="case-section__title">What I Learned</h2>
+      <div class="case-section__body">
+        <p>This was my first time taking an app from idea to production. The biggest lesson was that shipping is a skill on its own — writing code is maybe 60% of the work. The rest is design decisions, testing on real devices, navigating store requirements, and making hard calls about scope.</p>
+        <p>I also learned the value of working with a designer early. Having a collaborator who challenged my assumptions about the UI made the final product significantly better than what I would have built alone.</p>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="case-section fade-in" style="text-align: center; padding-bottom: var(--space-3xl);">
+      <a href="https://apps.apple.com/ca/app/puff-zero-quit-vaping-tracker/id6746369660" target="_blank" rel="noopener" class="btn btn--primary">View on App Store</a>
+      <a href="../index.html" class="btn btn--tertiary" style="margin-left: var(--space-md);">See other projects</a>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="footer__copy">&copy; 2026 Buianto Sodnomov</span>
+      <div class="footer__links">
+        <a href="https://github.com/reberie" target="_blank" rel="noopener" class="footer__link">GitHub</a>
+        <a href="https://www.linkedin.com/in/buianto-sodnomov-9087672ba/" target="_blank" rel="noopener" class="footer__link">LinkedIn</a>
+        <a href="mailto:bsodnomovv@gmail.com" class="footer__link">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
