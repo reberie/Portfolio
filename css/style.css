@@ -320,6 +320,13 @@ p {
   align-items: center;
 }
 
+.hero-socials {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+  justify-content: center;
+}
+
 .hero-social {
   display: inline-flex;
   align-items: center;
@@ -707,13 +714,24 @@ p {
   color: var(--on-surface-variant);
 }
 
-/* Case study sections */
+/* Case study wrapper — keeps page breathing room consistent */
+.case-study {
+  padding-bottom: var(--space-3xl);
+}
+
+/* Case study sections — uniform rhythm, editorial hairline separators */
 .case-section {
   padding: var(--space-2xl) 0;
+  border-top: 1px solid var(--surface-container-high);
+}
+
+.case-image + .case-section {
+  border-top: none;
 }
 
 .case-section__label {
-  margin-bottom: var(--space-sm);
+  display: inline-block;
+  margin-bottom: var(--space-md);
 }
 
 .case-section__title {
@@ -728,16 +746,24 @@ p {
   margin-bottom: var(--space-md);
 }
 
+.case-section__body p:last-child {
+  margin-bottom: 0;
+}
+
 .case-section__body ul {
   list-style: none;
   padding: 0;
-  margin-bottom: var(--space-md);
+  margin-bottom: 0;
 }
 
 .case-section__body li {
   position: relative;
   padding-left: var(--space-lg);
   margin-bottom: var(--space-sm);
+}
+
+.case-section__body li:last-child {
+  margin-bottom: 0;
 }
 
 .case-section__body li::before {
@@ -752,7 +778,7 @@ p {
 
 /* Image showcase within case study */
 .case-image {
-  margin: var(--space-xl) 0;
+  margin: var(--space-xl) 0 var(--space-2xl);
   border-radius: var(--radius-md);
   overflow: hidden;
   background: var(--surface-container-lowest);
@@ -785,23 +811,81 @@ p {
   box-shadow: -4px 0 16px rgba(0, 241, 254, 0.06);
 }
 
-/* Decision/Tradeoff card */
+/* Decision/Tradeoff grid */
+.decisions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+@media (min-width: 720px) {
+  .decisions {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 .decision-card {
   background: var(--surface-container-low);
-  border-radius: var(--radius-md);
+  border-left: 2px solid var(--primary);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
   padding: var(--space-lg);
-  margin-bottom: var(--space-md);
 }
 
 .decision-card__title {
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: 1.05rem;
+  font-weight: 600;
   color: var(--on-surface);
   margin-bottom: var(--space-sm);
+  letter-spacing: var(--letter-tight);
 }
 
 .decision-card__text {
-  font-size: 0.9rem;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Status note — subtle callout for in-development etc. */
+.case-note {
+  margin-top: var(--space-2xl);
+  padding: var(--space-xl);
+  background: var(--surface-container-low);
+  border-left: 2px solid var(--secondary);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.case-note__label {
+  display: inline-block;
+  margin-bottom: var(--space-sm);
+}
+
+.case-note__title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--on-surface);
+  margin-bottom: var(--space-sm);
+  letter-spacing: var(--letter-tight);
+}
+
+.case-note p {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  margin: 0;
+  max-width: 60ch;
+}
+
+/* CTA row at end of case study */
+.case-cta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-2xl) 0 0;
+  margin-top: var(--space-2xl);
+  border-top: 1px solid var(--surface-container-high);
 }
 
 /* Back link */
@@ -1211,10 +1295,6 @@ p {
     justify-content: center;
   }
 
-  .hero-social {
-    align-self: center;
-  }
-
   .nav__logo {
     font-size: 1rem;
   }
@@ -1227,21 +1307,18 @@ p {
     flex: 1 1 45%;
   }
 
-  .case-section [style*="padding-left"][style*="padding-right"] {
-    padding-left: var(--space-md) !important;
-    padding-right: var(--space-md) !important;
-  }
-
-  .case-section .btn + .btn {
-    margin-left: 0 !important;
-    margin-top: var(--space-md);
-  }
-
-  .case-section[style*="text-align: center"] {
-    display: flex;
+  .case-cta {
     flex-direction: column;
-    align-items: center;
-    gap: var(--space-sm);
+    align-items: stretch;
+  }
+
+  .case-cta .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .case-note {
+    padding: var(--space-lg);
   }
 
   .decision-card {

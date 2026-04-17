@@ -48,7 +48,7 @@
     </div>
   </nav>
 
-  <main class="container">
+  <main class="container case-study">
 
     <a href="../index.html" class="back-link">&larr; Back to projects</a>
 
@@ -82,8 +82,8 @@
 
     <!-- Problem -->
     <section class="case-section fade-in">
-      <span class="label case-section__label">01</span>
-      <h2 class="case-section__title">Problem & Context</h2>
+      <span class="label case-section__label">Context</span>
+      <h2 class="case-section__title">Problem</h2>
       <div class="case-section__body">
         <p>Health data from devices and lab results is increasingly available, but most people don't know what their numbers mean. Apple Health stores a wealth of data, but the raw values lack context — what's normal? What's changing? What should I pay attention to?</p>
         <p>BioHub bridges that gap: it takes health data and presents it in a way that's understandable and actionable.</p>
@@ -91,9 +91,9 @@
     </section>
 
     <!-- Role -->
-    <section class="case-section section--surface-low fade-in" style="padding-left: var(--space-lg); padding-right: var(--space-lg); border-radius: var(--radius-md);">
-      <span class="label case-section__label">02</span>
-      <h2 class="case-section__title">My Role & Contributions</h2>
+    <section class="case-section fade-in">
+      <span class="label case-section__label">Contribution</span>
+      <h2 class="case-section__title">My role</h2>
       <div class="case-section__body">
         <ul>
           <li>Sole developer — architecture, UI, data layer, and deployment</li>
@@ -105,9 +105,9 @@
 
     <!-- Technical Decisions -->
     <section class="case-section fade-in">
-      <span class="label case-section__label">03</span>
-      <h2 class="case-section__title">Key Technical Decisions</h2>
-      <div class="case-section__body">
+      <span class="label case-section__label">Decisions</span>
+      <h2 class="case-section__title">Key technical decisions</h2>
+      <div class="decisions">
         <div class="decision-card">
           <div class="decision-card__title">Native Swift + SwiftUI over cross-platform</div>
           <p class="decision-card__text">Health data on iOS means deep HealthKit integration. Going native gave direct access to Apple's health frameworks and ensured the UI felt like a first-class iOS citizen — something cross-platform tools struggle with for this kind of data-rich app.</p>
@@ -117,19 +117,16 @@
           <p class="decision-card__text">Rather than showing every possible metric, BioHub focuses on surfacing the data that matters most and presenting it with enough context to be useful. Less data, better understanding.</p>
         </div>
       </div>
-    </section>
 
-    <!-- Placeholder for more content -->
-    <section class="case-section section--surface-low fade-in" style="padding-left: var(--space-lg); padding-right: var(--space-lg); border-radius: var(--radius-md);">
-      <span class="label case-section__label">More details coming soon</span>
-      <h2 class="case-section__title">This project is in active development</h2>
-      <div class="case-section__body">
+      <aside class="case-note">
+        <span class="label case-note__label">In development</span>
+        <h3 class="case-note__title">More details coming soon</h3>
         <p>I'm currently building BioHub and will update this page with deeper technical details, challenges, screenshots, and learnings as the project progresses.</p>
-      </div>
+      </aside>
     </section>
 
     <!-- CTA -->
-    <section class="case-section fade-in" style="text-align: center; padding-bottom: var(--space-3xl);">
+    <section class="case-cta fade-in">
       <a href="../index.html" class="btn btn--primary">See other projects</a>
     </section>
 
