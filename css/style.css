@@ -301,6 +301,35 @@ p {
   justify-content: center;
 }
 
+.hero-social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  background: var(--surface-container-highest);
+  color: var(--on-surface-variant);
+  transition: color var(--transition-base), background var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
+}
+
+.hero-social svg {
+  width: 24px;
+  height: 24px;
+  transition: transform var(--transition-base);
+}
+
+.hero-social:hover {
+  color: var(--primary);
+  background: var(--surface-container-high);
+  box-shadow: var(--glow-primary);
+  transform: translateY(-2px);
+}
+
+.hero-social:hover svg {
+  transform: scale(1.1);
+}
+
 /* Ambient glow behind hero — symmetrical, framing the content */
 .hero__glow {
   position: absolute;
@@ -992,6 +1021,10 @@ p {
   margin-bottom: var(--space-xl);
   max-width: 50ch;
   font-size: 1rem;
+}
+
+.about-contact__socials {
+  margin-top: var(--space-lg);
 }
 
 /* ============================================
