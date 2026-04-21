@@ -725,7 +725,8 @@ p {
   border-top: 1px solid var(--surface-container-high);
 }
 
-.case-image + .case-section {
+.case-image + .case-section,
+.screenshots-grid + .case-section {
   border-top: none;
 }
 
@@ -793,6 +794,54 @@ p {
   font-size: 0.8rem;
   color: var(--on-surface-variant);
   opacity: 0.7;
+}
+
+/* When screenshots-grid is nested inside a .case-image wrapper, neutralize the
+   wrapper's dark surface box so only the images show. */
+.case-image:has(.screenshots-grid) {
+  background: transparent;
+  overflow: visible;
+  border-radius: 0;
+}
+
+.case-image > .screenshots-grid {
+  margin: 0;
+}
+
+.screenshots-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-md);
+  margin: var(--space-xl) 0 var(--space-2xl);
+  align-items: start;
+}
+
+.screenshots-grid img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+}
+
+@media (max-width: 720px) {
+  .screenshots-grid {
+    display: flex;
+    gap: var(--space-sm);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-padding-inline: var(--space-md);
+    padding-bottom: var(--space-sm);
+    margin-inline: calc(var(--space-md) * -1);
+    padding-inline: var(--space-md);
+  }
+
+  .screenshots-grid img {
+    flex: 0 0 auto;
+    width: 62%;
+    max-width: 260px;
+    scroll-snap-align: center;
+  }
 }
 
 /* Code Fragment (from DESIGN.md) */
