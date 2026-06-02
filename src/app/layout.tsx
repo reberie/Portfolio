@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Space_Grotesk, Inter } from 'next/font/google';
 import './globals.css';
+import Background from '@/components/Background';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import SmoothScroll from '@/components/SmoothScroll';
@@ -69,6 +70,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`}>
       <body>
+        <Background />
         <SmoothScroll>
           <Nav />
           {children}

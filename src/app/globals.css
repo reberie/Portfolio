@@ -1484,3 +1484,122 @@ html.lenis body {
     transform: none !important;
   }
 }
+
+/* ============================================
+   PERSISTENT 3D BACKGROUND + HOME RESTRUCTURE
+   One fixed WebGL scene sits behind the whole
+   page; content sections become translucent
+   panels so it drifts subtly through everything.
+   ============================================ */
+
+/* Base void lives on <html> so the fixed (transparent) canvas renders in
+   front of it, with page content in front of the canvas. */
+html {
+  background-color: var(--bg);
+}
+
+body {
+  background-color: transparent;
+}
+
+.bg-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+
+.bg-canvas--ready {
+  opacity: 1;
+}
+
+/* Lift all page content above the fixed background (z-index:0). */
+.nav,
+.hero,
+.section,
+main,
+footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* Translucent panels so the 3D shows through between/behind content. */
+.section--surface-low {
+  background-color: rgba(18, 18, 18, 0.6);
+}
+
+.section--surface {
+  background-color: rgba(12, 12, 12, 0.5);
+}
+
+.footer {
+  background-color: rgba(0, 0, 0, 0.55);
+}
+
+/* Reading-heavy pages get a calmer translucent backing for legibility. */
+.case-study {
+  background-color: rgba(12, 12, 12, 0.6);
+  border-radius: var(--radius-lg);
+  margin-top: var(--space-lg);
+  padding-inline: var(--space-lg);
+}
+
+/* --- Asymmetric hero: copy anchored left, 3D object to the right --- */
+.hero {
+  text-align: left;
+  overflow: visible;
+}
+
+.hero__content {
+  align-items: flex-start;
+  text-align: left;
+  max-width: 620px;
+  margin: 0;
+}
+
+.hero__cta {
+  justify-content: flex-start;
+}
+
+.hero__subtitle {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Legibility scrim retuned for the left-anchored copy. */
+.hero__content::before {
+  inset: -14% -25% -14% -45%;
+  background: radial-gradient(
+    ellipse at 32% 50%,
+    rgba(14, 14, 14, 0.72) 0%,
+    rgba(14, 14, 14, 0.4) 46%,
+    rgba(14, 14, 14, 0) 78%
+  );
+}
+
+/* --- Intro / availability band --- */
+.intro__lead {
+  font-size: clamp(1.15rem, 2.2vw, 1.6rem);
+  color: var(--on-surface);
+  max-width: 60ch;
+  margin: var(--space-md) 0 var(--space-xl);
+  line-height: 1.5;
+}
+
+.intro .about-meta {
+  margin-top: var(--space-lg);
+}
+
+/* Inline "see more" link under home sections. */
+.section__cta {
+  display: inline-flex;
+  margin-top: var(--space-xl);
+}
+
+@media (max-width: 768px) {
+  .hero__content {
+    max-width: 100%;
+  }
+}

@@ -4,15 +4,16 @@ import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 import CanvasErrorBoundary from './CanvasErrorBoundary';
 
-// The WebGL scene touches `window`, so it must never render on the server.
-const HeroScene = dynamic(() => import('@/three/HeroScene'), { ssr: false });
+// The scene touches `window`, so it must never render on the server.
+const SceneBackground = dynamic(() => import('@/three/SceneBackground'), { ssr: false });
 
 /**
- * Client-only mount point for the hero's Three.js scene. Stays unmounted when
- * the user prefers reduced motion (the CSS glows carry the hero instead) and is
- * wrapped in an error boundary for devices without WebGL.
+ * Mounts the persistent, page-wide WebGL background once (in the root layout, so
+ * it survives client-side navigation). Unmounts under prefers-reduced-motion —
+ * the page then sits on the flat --bg void — and is wrapped in an error boundary
+ * so devices without WebGL degrade gracefully.
  */
-export default function HeroCanvas() {
+export default function Background() {
   const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
@@ -27,7 +28,7 @@ export default function HeroCanvas() {
 
   return (
     <CanvasErrorBoundary>
-      <HeroScene />
+      <SceneBackground />
     </CanvasErrorBoundary>
   );
 }

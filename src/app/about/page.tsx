@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import Timeline from '@/components/Timeline';
+import { EXPERIENCE } from '@/lib/content';
 import { GithubIcon, LinkedInIcon, MailIcon } from '@/components/icons';
 
 export const metadata: Metadata = {
@@ -61,100 +63,7 @@ export default function About() {
               <h2 className="about-experience__title">Where I&apos;ve worked &amp; studied</h2>
             </div>
 
-            <div className="timeline stagger">
-              <div className="timeline__item timeline__item--active">
-                <div className="timeline__date">
-                  <span>Apr 2026 — Present</span>
-                  <span className="timeline__date-type">Internship</span>
-                </div>
-                <div className="timeline__role">Software Developer Field Placement</div>
-                <div className="timeline__company">
-                  <span className="timeline__company-name">Lakeridge Health</span> · Oshawa,
-                  ON · Remote
-                </div>
-                <p className="timeline__desc">
-                  Current field placement as part of my Advanced Diploma. Contributing to
-                  software development work in a healthcare setting.
-                </p>
-              </div>
-
-              <div className="timeline__item">
-                <div className="timeline__date">
-                  <span>Oct 2025 — Apr 2026</span>
-                  <span className="timeline__date-type">Part-time</span>
-                </div>
-                <div className="timeline__role">Peer Coach</div>
-                <div className="timeline__company">
-                  <span className="timeline__company-name">Durham College</span> · Oshawa, ON
-                </div>
-                <p className="timeline__desc">
-                  One-on-one coaching on time management, organization, and academic
-                  planning. Adapted communication to each student&apos;s style and level of
-                  prior knowledge.
-                </p>
-              </div>
-
-              <div className="timeline__item">
-                <div className="timeline__date">
-                  <span>May 2025 — Aug 2025</span>
-                  <span className="timeline__date-type">Internship</span>
-                </div>
-                <div className="timeline__role">Software Developer Intern</div>
-                <div className="timeline__company">
-                  <span className="timeline__company-name">Giesecke+Devrient</span> ·
-                  Markham, ON
-                </div>
-                <p className="timeline__desc">
-                  Full SDLC in Agile. Resolved .NET/ASP.NET defects, contributed to Jenkins
-                  CI/CD, supported SonarQube code quality to 50%+ coverage, and helped
-                  migrate version control from TFS to Bitbucket. Wrote 50+ pages of
-                  technical docs in Confluence.
-                </p>
-              </div>
-
-              <div className="timeline__item">
-                <div className="timeline__date">
-                  <span>Sep 2024 — Apr 2025</span>
-                  <span className="timeline__date-type">Part-time</span>
-                </div>
-                <div className="timeline__role">A/V Technician</div>
-                <div className="timeline__company">
-                  <span className="timeline__company-name">Durham College</span> · Oshawa, ON
-                </div>
-                <p className="timeline__desc">
-                  Diagnosed and resolved technical issues during live events under time
-                  pressure. Tracked 1000+ pieces of equipment and took initiative to keep
-                  setups running smoothly.
-                </p>
-              </div>
-
-              <div className="timeline__item">
-                <div className="timeline__date">
-                  <span>May 2024 — Apr 2025</span>
-                  <span className="timeline__date-type">Part-time</span>
-                </div>
-                <div className="timeline__role">Peer Tutor</div>
-                <div className="timeline__company">
-                  <span className="timeline__company-name">Durham College</span> · Oshawa, ON
-                </div>
-                <p className="timeline__desc">
-                  Supported 3+ students weekly with technical concepts and problem-solving.
-                  Gave feedback on 5+ assignments per week.
-                </p>
-              </div>
-
-              <div className="timeline__item">
-                <div className="timeline__date">
-                  <span>Jan 2024 — Apr 2026</span>
-                  <span className="timeline__date-type">Education</span>
-                </div>
-                <div className="timeline__role">Computer Programming &amp; Analysis</div>
-                <div className="timeline__company">
-                  <span className="timeline__company-name">Durham College</span> · Advanced
-                  Diploma
-                </div>
-              </div>
-            </div>
+            <Timeline items={EXPERIENCE} />
           </div>
         </div>
       </section>
