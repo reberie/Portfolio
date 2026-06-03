@@ -2,11 +2,20 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Nav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // Transparent over the hero; a frosted background fades in once scrolled.
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   const isHome = pathname === '/';
   const isAbout = pathname.startsWith('/about');
@@ -14,7 +23,7 @@ export default function Nav() {
   const close = () => setOpen(false);
 
   return (
-    <nav className="nav">
+    <nav className={`nav${scrolled || open ? ' nav--scrolled' : ''}`}>
       <div className="nav__inner">
         <Link href="/" className="nav__logo" onClick={close}>
           Buianto Sodnomov

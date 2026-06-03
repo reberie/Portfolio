@@ -1469,25 +1469,13 @@ footer {
   z-index: 1;
 }
 
-/* Translucent panels so the 3D shows through between/behind content. */
-.section--surface-low {
-  background-color: rgba(18, 18, 18, 0.6);
-}
-
-.section--surface {
-  background-color: rgba(12, 12, 12, 0.5);
-}
-
-.footer {
-  background-color: rgba(0, 0, 0, 0.55);
-}
-
-/* Reading-heavy pages get a calmer translucent backing for legibility. */
+/* Seamless: sections are transparent — the page is one continuous 3D scene,
+   calmed globally by .bg-scrim for legibility (no per-section seams). */
+.section--surface,
+.section--surface-low,
+.footer,
 .case-study {
-  background-color: rgba(12, 12, 12, 0.6);
-  border-radius: var(--radius-lg);
-  margin-top: var(--space-lg);
-  padding-inline: var(--space-lg);
+  background-color: transparent;
 }
 
 /* --- Asymmetric hero: copy anchored left, 3D object to the right --- */
@@ -1570,4 +1558,86 @@ footer {
 /* Show the nav underline on focus, not just hover. */
 .nav__link:focus-visible::after {
   width: 100%;
+}
+
+/* ============================================
+   SMOOTH PASS — seamless scene, glass cards,
+   scroll-aware nav. Replaces the per-section
+   contrast bands with one continuous backdrop.
+   ============================================ */
+
+/* One fixed scrim dims the particle field uniformly so floating content
+   stays legible — sits above the canvas (z:0), below content (z:1). */
+.bg-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: rgba(14, 14, 14, 0.42);
+}
+
+/* The global scrim now carries hero legibility — drop the local scrim. */
+.hero__content::before {
+  content: none;
+}
+
+/* --- Frosted-glass project cards --- */
+.project-card {
+  background: rgba(38, 38, 38, 0.3);
+  -webkit-backdrop-filter: blur(14px) saturate(1.1);
+  backdrop-filter: blur(14px) saturate(1.1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+}
+
+/* A soft full-width gradient hairline replaces the hard cyan notch. */
+.project-card::before {
+  left: 0;
+  right: 0;
+  width: auto;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--primary),
+    var(--secondary),
+    transparent
+  );
+  opacity: 0.45;
+  transition: opacity var(--transition-base);
+}
+
+.project-card:hover {
+  border-color: rgba(0, 241, 254, 0.3);
+  box-shadow: var(--glow-primary), var(--glow-secondary);
+}
+
+.project-card:hover::before {
+  opacity: 0.9;
+}
+
+/* Let the card glass show through the image slot + placeholder. */
+.project-card__image {
+  background: transparent;
+}
+
+.placeholder-img {
+  background: rgba(255, 255, 255, 0.025);
+}
+
+/* --- Scroll-aware navbar: transparent over the hero, glass once scrolled --- */
+.nav {
+  background: transparent;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  border-bottom: 1px solid transparent;
+  transition: background var(--transition-base),
+    backdrop-filter var(--transition-base), border-color var(--transition-base);
+}
+
+.nav--scrolled {
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border-bottom-color: rgba(255, 255, 255, 0.06);
 }

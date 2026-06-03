@@ -77,6 +77,9 @@ export default function RootLayout({
           }}
         />
         <Background />
+        {/* Fixed scrim that calms the particle field so text stays legible
+            everywhere — replaces the per-section background bands. */}
+        <div className="bg-scrim" aria-hidden />
         <SmoothScroll>
           <Nav />
           {children}
