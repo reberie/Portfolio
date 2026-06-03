@@ -152,10 +152,14 @@ function World({ scroll, count }: { scroll: ScrollRef; count: number }) {
     }
 
     if (coreGroup.current) {
-      const portrait = aspect < 1;
-      // Right of the copy on desktop; lifted above it (smaller) on mobile.
-      const targetX = portrait ? 0 : 2.3;
-      const targetY = portrait ? 1.3 : 0;
+      // Keep the icosahedron "half off the right edge" on EVERY aspect ratio.
+      // Visible half-width at the core's depth = camDist(6) * tan(fov/2 = 21deg)
+      // * aspect = 2.303 * aspect. Anchoring the centre just inside that edge
+      // shows a consistent ~half of the object, flush right, on any device.
+      const halfWidth = 2.303 * aspect;
+      // Clamp so ultra-wide screens don't strand it far right (cap ~16:9 look)
+      // and ultra-narrow/foldables never let it drift past centre (floor).
+      const targetX = Math.min(Math.max(halfWidth - 0.25, 1.0), 4.2);
       coreGroup.current.position.x = THREE.MathUtils.lerp(
         coreGroup.current.position.x,
         targetX,
@@ -163,12 +167,11 @@ function World({ scroll, count }: { scroll: ScrollRef; count: number }) {
       );
       coreGroup.current.position.y = THREE.MathUtils.lerp(
         coreGroup.current.position.y,
-        targetY,
+        0,
         0.05,
       );
       coreGroup.current.rotation.z = p * Math.PI * 0.6; // slow extra spin with scroll
-      const base = portrait ? 0.7 : 1;
-      coreGroup.current.scale.setScalar(base * (1 - p * 0.15)); // smaller on mobile, recede on scroll
+      coreGroup.current.scale.setScalar(1 - p * 0.15); // recede slightly on scroll
     }
   });
 
