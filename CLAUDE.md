@@ -19,14 +19,16 @@ GitHub Pages at https://buiantosodnomov.com.
 ## Project layout
 - `src/app/` — App Router pages (`/`, `/about`, `/projects/puffzero`, `/projects/biohub`),
   `layout.tsx` (fonts + metadata + shell), `globals.css` (design system), `sitemap.ts`, `robots.ts`
-- `src/components/` — Nav, Footer, SmoothScroll, ScrollReveal, HeroCanvas, CanvasErrorBoundary, icons
-- `src/three/` — R3F scenes (`HeroScene.tsx`). NEVER import three/R3F from a server component.
+- `src/components/` — Nav, Footer, SmoothScroll, ScrollReveal, Background, CanvasErrorBoundary, Timeline, icons
+- `src/three/` — R3F scenes (`SceneBackground.tsx`, the persistent page-wide WebGL background). NEVER import three/R3F from a server component.
+- `src/lib/` — shared content/data (`content.ts`: `EXPERIENCE`, `SKILLS`)
 - `public/` — static assets, `CNAME` (custom domain), `.nojekyll`, og-image, old-URL redirect stubs
 
 ## Conventions
-- The Canvas is mounted ONLY via `dynamic(() => import('@/three/HeroScene'), { ssr: false })`
-  inside a client component (three.js touches `window`).
-- All motion respects `prefers-reduced-motion`: `SmoothScroll` and `HeroCanvas` no-op under it,
+- The Canvas is mounted ONLY via `dynamic(() => import('@/three/SceneBackground'), { ssr: false })`
+  inside a client component (`Background.tsx`); three.js touches `window`. It is ONE fixed,
+  page-wide canvas behind all content (z-index:0), mounted once in `layout.tsx`.
+- All motion respects `prefers-reduced-motion`: `SmoothScroll` and `Background` no-op under it,
   and `globals.css` reveals all `.fade-in`/`.stagger` content immediately.
 - The design system is class-based — the ported "Technical Luminance" CSS lives in `globals.css`.
   Reuse the existing classes/tokens; fonts come from `next/font` (Space Grotesk + Inter) via CSS vars.
@@ -37,7 +39,20 @@ GitHub Pages at https://buiantosodnomov.com.
 
 ## Definition of done (every change)
 1. `npm run typecheck && npm run lint && npm run build` passes
-2. Verified visually (preview screenshot) at desktop AND mobile
+2. Verified visually at desktop AND mobile (see loop below)
 3. No new console errors in the browser
+
+## Visual verification loop (Claude Preview MCP)
+Screenshots can lie (stale CSS, races) — assert the DOM, not just pixels.
+1. Make the change.
+2. Warm the route (`curl -s localhost:3000/<path>`) so the dev server compiles; reload the preview.
+3. `preview_screenshot` at desktop (~1265) AND mobile (`preview_resize` → 375).
+4. `preview_eval` to assert specifics: computed styles match intent, the new CSS rule is
+   actually present in `document.styleSheets`, and the console has zero errors.
+5. If it "should" be visible but isn't: stop the preview, `rm -rf .next`, restart, re-warm —
+   Turbopack can serve stale CSS/JS after large edits. Don't trust a screenshot that contradicts the code.
+6. Then run the gate in step 1.
+Taste, motion, easing, and "does it feel cinematic" are NOT observable from a screenshot —
+surface those to the user instead of guessing.
 
 @AGENTS.md

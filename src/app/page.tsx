@@ -125,7 +125,16 @@ export default function Home() {
 
           <div className="projects-grid stagger">
             <Link href="/projects/puffzero" className="project-card">
-              <img src="/puffzero-screenshot.png" alt="PuffZero app banner" />
+              <div className="project-card__image">
+                <img
+                  src="/puffzero-screenshot.png"
+                  alt="PuffZero app banner"
+                  width={1280}
+                  height={720}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
               <div className="project-card__body">
                 <span className="label project-card__label">Mobile App</span>
                 <h3 className="project-card__title">PuffZero</h3>

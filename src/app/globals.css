@@ -356,31 +356,7 @@ p {
   transform: scale(1.1);
 }
 
-/* Ambient glow behind hero — symmetrical, framing the content */
-.hero__glow {
-  position: absolute;
-  width: 600px;
-  height: 600px;
-  border-radius: 50%;
-  filter: blur(140px);
-  pointer-events: none;
-}
-
-.hero__glow--primary {
-  background: var(--primary);
-  top: 5%;
-  left: 50%;
-  transform: translateX(-65%);
-  opacity: 0.14;
-}
-
-.hero__glow--secondary {
-  background: var(--secondary);
-  bottom: 0%;
-  left: 50%;
-  transform: translateX(-35%);
-  opacity: 0.07;
-}
+/* Ambient hero glows removed — the global WebGL background provides the glow now. */
 
 /* --- Buttons --- */
 .btn {
@@ -1252,13 +1228,18 @@ p {
     transform: translateY(-100%);
     opacity: 0;
     pointer-events: none;
-    transition: transform var(--transition-base), opacity var(--transition-base);
+    visibility: hidden;
+    transition: transform var(--transition-base), opacity var(--transition-base),
+      visibility 0s linear 0.3s;
   }
 
   .nav__links.open {
     transform: translateY(0);
     opacity: 1;
     pointer-events: auto;
+    visibility: visible;
+    transition: transform var(--transition-base), opacity var(--transition-base),
+      visibility 0s;
   }
 
   .nav__toggle {
@@ -1269,17 +1250,7 @@ p {
     min-height: 85vh;
   }
 
-  .hero__glow {
-    width: 420px;
-    height: 420px;
-    filter: blur(100px);
-  }
-
   .projects-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .about-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1325,12 +1296,6 @@ p {
 
   .hero {
     padding-bottom: var(--space-xl);
-  }
-
-  .hero__glow {
-    width: 320px;
-    height: 320px;
-    filter: blur(80px);
   }
 
   .hero__cta {
@@ -1394,27 +1359,6 @@ p {
   color: var(--on-surface-variant);
   font-size: 0.85rem;
   opacity: 0.5;
-}
-
-/* ============================================
-   THREE.JS HERO CANVAS
-   Full-bleed WebGL layer behind the hero content.
-   Sits above the ambient CSS glows (z:0) and below
-   the hero copy (z:2). Fades in once the first frame
-   has rendered to avoid a hard pop.
-   ============================================ */
-
-.hero__canvas {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none; /* clicks pass through to the hero CTAs */
-  opacity: 0;
-  transition: opacity 1.2s ease;
-}
-
-.hero__canvas--ready {
-  opacity: 1;
 }
 
 /* Radial scrim behind the hero copy so text stays legible over the busiest
@@ -1602,4 +1546,28 @@ footer {
   .hero__content {
     max-width: 100%;
   }
+}
+
+/* ============================================
+   FOCUS-VISIBLE (keyboard accessibility)
+   A consistent, visible focus ring for every
+   interactive element — the design previously
+   only styled :hover.
+   ============================================ */
+
+:where(a, button, .btn, .project-card, .social-btn, .hero-social, .chip):focus-visible {
+  outline: 2px solid var(--secondary);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* Mirror the card hover lift on keyboard focus. */
+.project-card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: var(--glow-primary);
+}
+
+/* Show the nav underline on focus, not just hover. */
+.nav__link:focus-visible::after {
+  width: 100%;
 }

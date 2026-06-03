@@ -184,7 +184,15 @@ function World({ scroll, count }: { scroll: ScrollRef; count: number }) {
 
 export default function SceneBackground() {
   const [ready, setReady] = useState(false);
+  // Stop the render loop entirely while the tab is hidden (saves battery/GPU).
+  const [frameloop, setFrameloop] = useState<'always' | 'never'>('always');
   const scroll = useScrollProgress();
+
+  useEffect(() => {
+    const onVisibility = () => setFrameloop(document.hidden ? 'never' : 'always');
+    document.addEventListener('visibilitychange', onVisibility);
+    return () => document.removeEventListener('visibilitychange', onVisibility);
+  }, []);
 
   // Lighter load on small screens.
   const isMobile =
@@ -196,6 +204,8 @@ export default function SceneBackground() {
     <Canvas
       className={`bg-canvas${ready ? ' bg-canvas--ready' : ''}`}
       style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none' }}
+      frameloop={frameloop}
+      aria-hidden
       dpr={dpr}
       gl={{ powerPreference: 'high-performance', antialias: false, alpha: true, stencil: false }}
       camera={{ position: [0, 0, 6], fov: 42 }}

@@ -70,6 +70,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`}>
       <body>
+        {/* Reveal scroll-in content for users without JS (the .visible class never gets added). */}
+        <noscript
+          dangerouslySetInnerHTML={{
+            __html: '<style>.fade-in,.stagger>*{opacity:1!important;transform:none!important}</style>',
+          }}
+        />
         <Background />
         <SmoothScroll>
           <Nav />
