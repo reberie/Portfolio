@@ -44,6 +44,13 @@ export const metadata: Metadata = {
     title: 'PuffZero — Buianto Sodnomov',
     description:
       'Case study: PuffZero, a cross-platform quit-vaping tracker app published on the App Store.',
+    images: [
+      { url: '/og/puffzero.png', width: 1200, height: 630, alt: 'PuffZero — Buianto Sodnomov' },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['/og/puffzero.png'],
   },
 };
 

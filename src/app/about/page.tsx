@@ -14,6 +14,13 @@ export const metadata: Metadata = {
     title: 'About — Buianto Sodnomov',
     description:
       'Software developer based in Toronto. Building mobile apps and full-stack systems.',
+    images: [
+      { url: '/og/about.png', width: 1200, height: 630, alt: 'About — Buianto Sodnomov' },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['/og/about.png'],
   },
 };
 

@@ -39,6 +39,13 @@ export const metadata: Metadata = {
     url: '/projects/biohub',
     title: 'BioHub — Buianto Sodnomov',
     description: 'Case study: BioHub, an iOS health app built with Swift and SwiftUI.',
+    images: [
+      { url: '/og/biohub.png', width: 1200, height: 630, alt: 'BioHub — Buianto Sodnomov' },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['/og/biohub.png'],
   },
 };
 
