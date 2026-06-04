@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Timeline from '@/components/Timeline';
+import ContactSection from '@/components/ContactSection';
 import { EXPERIENCE } from '@/lib/content';
-import { GithubIcon, LinkedInIcon, MailIcon } from '@/components/icons';
 
 export const metadata: Metadata = {
   title: 'About',
@@ -69,46 +69,7 @@ export default function About() {
       </section>
 
       {/* Contact */}
-      <section className="section section--surface">
-        <div className="container">
-          <div className="about-contact fade-in">
-            <span className="label">Let&apos;s talk</span>
-            <h2 className="about-contact__title" style={{ marginTop: 'var(--space-sm)' }}>
-              Always open to a good conversation.
-            </h2>
-            <p className="about-contact__text">
-              Whether you have a role, a project, or just want to chat about something
-              you&apos;re building — reach out.
-            </p>
-            <a href="mailto:bsodnomovv@gmail.com" className="btn btn--primary">
-              <MailIcon className="btn__icon" />
-              <span>Get in touch</span>
-            </a>
-            <div className="socials about-contact__socials">
-              <a
-                href="https://github.com/reberie"
-                target="_blank"
-                rel="noopener"
-                className="social-btn"
-                data-label="GitHub"
-                aria-label="GitHub"
-              >
-                <GithubIcon />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/buianto-sodnomov-9087672ba/"
-                target="_blank"
-                rel="noopener"
-                className="social-btn"
-                data-label="LinkedIn"
-                aria-label="LinkedIn"
-              >
-                <LinkedInIcon />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ContactSection className="section section--surface" />
     </>
   );
 }

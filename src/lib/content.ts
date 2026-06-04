@@ -73,3 +73,49 @@ export const SKILLS = [
   'MongoDB', 'Firebase', 'Azure', 'AWS', 'Git', 'CI/CD', 'Jenkins',
   'REST APIs', 'OAuth / JWT',
 ];
+
+// Single source of truth for the profile URLs (referenced in many places).
+export const SOCIALS = {
+  github: 'https://github.com/reberie',
+  linkedin: 'https://www.linkedin.com/in/buianto-sodnomov-9087672ba/',
+  email: 'mailto:bsodnomovv@gmail.com',
+} as const;
+
+export type Project = {
+  slug: string;
+  href: string;
+  category: string;
+  title: string;
+  description: string;
+  tags: string[];
+  image?: { src: string; alt: string; width: number; height: number };
+  placeholder?: string;
+};
+
+export const PROJECTS: Project[] = [
+  {
+    slug: 'puffzero',
+    href: '/projects/puffzero',
+    category: 'Mobile App',
+    title: 'PuffZero',
+    description:
+      'A cross-platform quit-vaping tracker published on the App Store. Designed, built, and shipped end-to-end.',
+    tags: ['React Native', 'Expo', 'App Store'],
+    image: {
+      src: '/puffzero-screenshot.png',
+      alt: 'PuffZero app banner',
+      width: 1280,
+      height: 720,
+    },
+  },
+  {
+    slug: 'biohub',
+    href: '/projects/biohub',
+    category: 'iOS App',
+    title: 'BioHub',
+    description:
+      'A health app that helps users understand and make sense of their health data. Built natively with Swift and SwiftUI.',
+    tags: ['Swift', 'SwiftUI', 'HealthKit'],
+    placeholder: 'Screenshot coming soon',
+  },
+];

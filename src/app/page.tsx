@@ -1,7 +1,10 @@
 import Link from 'next/link';
 import Timeline from '@/components/Timeline';
-import { EXPERIENCE, SKILLS } from '@/lib/content';
-import { ArrowRightIcon, GithubIcon, LinkedInIcon, MailIcon, UserIcon } from '@/components/icons';
+import ProjectCard from '@/components/ProjectCard';
+import ContactSection from '@/components/ContactSection';
+import SocialLinks from '@/components/SocialLinks';
+import { EXPERIENCE, PROJECTS, SKILLS, SOCIALS } from '@/lib/content';
+import { ArrowRightIcon, UserIcon } from '@/components/icons';
 
 const personSchema = {
   '@context': 'https://schema.org',
@@ -18,11 +21,8 @@ const personSchema = {
     addressRegion: 'ON',
     addressCountry: 'CA',
   },
-  email: 'mailto:bsodnomovv@gmail.com',
-  sameAs: [
-    'https://github.com/reberie',
-    'https://www.linkedin.com/in/buianto-sodnomov-9087672ba/',
-  ],
+  email: SOCIALS.email,
+  sameAs: [SOCIALS.github, SOCIALS.linkedin],
 };
 
 export default function Home() {
@@ -59,24 +59,11 @@ export default function Home() {
                 <span>About me</span>
               </Link>
               <div className="hero-socials">
-                <a
-                  href="https://github.com/reberie"
-                  target="_blank"
-                  rel="noopener"
+                <SocialLinks
                   className="hero-social"
-                  aria-label="GitHub"
-                >
-                  <GithubIcon />
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/buianto-sodnomov-9087672ba/"
-                  target="_blank"
-                  rel="noopener"
-                  className="hero-social"
-                  aria-label="LinkedIn"
-                >
-                  <LinkedInIcon />
-                </a>
+                  withLabel={false}
+                  include={['github', 'linkedin']}
+                />
               </div>
             </div>
           </div>
@@ -122,52 +109,10 @@ export default function Home() {
           >
             Featured projects
           </h2>
-
           <div className="projects-grid stagger">
-            <Link href="/projects/puffzero" className="project-card">
-              <div className="project-card__image">
-                <img
-                  src="/puffzero-screenshot.png"
-                  alt="PuffZero app banner"
-                  width={1280}
-                  height={720}
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-              <div className="project-card__body">
-                <span className="label project-card__label">Mobile App</span>
-                <h3 className="project-card__title">PuffZero</h3>
-                <p className="project-card__desc">
-                  A cross-platform quit-vaping tracker published on the App Store.
-                  Designed, built, and shipped end-to-end.
-                </p>
-                <div className="project-card__tags">
-                  <span className="chip">React Native</span>
-                  <span className="chip">Expo</span>
-                  <span className="chip">App Store</span>
-                </div>
-              </div>
-            </Link>
-
-            <Link href="/projects/biohub" className="project-card">
-              <div className="project-card__image">
-                <div className="placeholder-img">Screenshot coming soon</div>
-              </div>
-              <div className="project-card__body">
-                <span className="label project-card__label">iOS App</span>
-                <h3 className="project-card__title">BioHub</h3>
-                <p className="project-card__desc">
-                  A health app that helps users understand and make sense of their health
-                  data. Built natively with Swift and SwiftUI.
-                </p>
-                <div className="project-card__tags">
-                  <span className="chip">Swift</span>
-                  <span className="chip">SwiftUI</span>
-                  <span className="chip">HealthKit</span>
-                </div>
-              </div>
-            </Link>
+            {PROJECTS.map((project) => (
+              <ProjectCard key={project.slug} project={project} />
+            ))}
           </div>
         </div>
       </section>
@@ -212,46 +157,7 @@ export default function Home() {
       </section>
 
       {/* Contact */}
-      <section className="section section--surface-low" id="contact">
-        <div className="container">
-          <div className="about-contact fade-in">
-            <span className="label">Let&apos;s talk</span>
-            <h2 className="about-contact__title" style={{ marginTop: 'var(--space-sm)' }}>
-              Always open to a good conversation.
-            </h2>
-            <p className="about-contact__text">
-              Whether you have a role, a project, or just want to chat about something
-              you&apos;re building — reach out.
-            </p>
-            <a href="mailto:bsodnomovv@gmail.com" className="btn btn--primary">
-              <MailIcon className="btn__icon" />
-              <span>Get in touch</span>
-            </a>
-            <div className="socials about-contact__socials">
-              <a
-                href="https://github.com/reberie"
-                target="_blank"
-                rel="noopener"
-                className="social-btn"
-                data-label="GitHub"
-                aria-label="GitHub"
-              >
-                <GithubIcon />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/buianto-sodnomov-9087672ba/"
-                target="_blank"
-                rel="noopener"
-                className="social-btn"
-                data-label="LinkedIn"
-                aria-label="LinkedIn"
-              >
-                <LinkedInIcon />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ContactSection className="section section--surface-low" id="contact" />
     </>
   );
 }
