@@ -1,8 +1,37 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import JsonLd from '@/components/JsonLd';
 
 const APP_STORE_URL =
   'https://apps.apple.com/ca/app/puff-zero-quit-vaping-tracker/id6746369660';
+
+const SITE = 'https://buiantosodnomov.com';
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'SoftwareApplication',
+      name: 'PuffZero',
+      description: 'A cross-platform quit-vaping tracker published on the App Store.',
+      applicationCategory: 'HealthApplication',
+      operatingSystem: 'iOS, Android',
+      url: APP_STORE_URL,
+      author: { '@type': 'Person', name: 'Buianto Sodnomov', url: `${SITE}/` },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'PuffZero',
+          item: `${SITE}/projects/puffzero/`,
+        },
+      ],
+    },
+  ],
+};
 
 export const metadata: Metadata = {
   title: 'PuffZero',
@@ -20,7 +49,8 @@ export const metadata: Metadata = {
 
 export default function PuffZero() {
   return (
-    <main className="container case-study">
+    <div className="container case-study">
+      <JsonLd data={schema} />
       <Link href="/#projects" className="back-link">
         ← Back to projects
       </Link>
@@ -168,6 +198,6 @@ export default function PuffZero() {
           See other projects
         </Link>
       </section>
-    </main>
+    </div>
   );
 }

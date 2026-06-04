@@ -6,6 +6,8 @@ import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import SmoothScroll from '@/components/SmoothScroll';
 import ScrollReveal from '@/components/ScrollReveal';
+import SkipLink from '@/components/SkipLink';
+import ScrollProgress from '@/components/ScrollProgress';
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -80,9 +82,13 @@ export default function RootLayout({
         {/* Fixed scrim that calms the particle field so text stays legible
             everywhere — replaces the per-section background bands. */}
         <div className="bg-scrim" aria-hidden />
+        <SkipLink />
+        <ScrollProgress />
         <SmoothScroll>
           <Nav />
-          {children}
+          <main id="main-content" tabIndex={-1}>
+            {children}
+          </main>
           <Footer />
         </SmoothScroll>
         <ScrollReveal />

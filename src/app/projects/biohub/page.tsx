@@ -1,5 +1,33 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import JsonLd from '@/components/JsonLd';
+
+const SITE = 'https://buiantosodnomov.com';
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'CreativeWork',
+      name: 'BioHub',
+      description:
+        'A native iOS health app that helps users make sense of their health data.',
+      author: { '@type': 'Person', name: 'Buianto Sodnomov', url: `${SITE}/` },
+      url: `${SITE}/projects/biohub/`,
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'BioHub',
+          item: `${SITE}/projects/biohub/`,
+        },
+      ],
+    },
+  ],
+};
 
 export const metadata: Metadata = {
   title: 'BioHub',
@@ -16,7 +44,8 @@ export const metadata: Metadata = {
 
 export default function BioHub() {
   return (
-    <main className="container case-study">
+    <div className="container case-study">
+      <JsonLd data={schema} />
       <Link href="/#projects" className="back-link">
         ← Back to projects
       </Link>
@@ -120,6 +149,6 @@ export default function BioHub() {
           See other projects
         </Link>
       </section>
-    </main>
+    </div>
   );
 }

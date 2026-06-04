@@ -1641,3 +1641,40 @@ footer {
   backdrop-filter: var(--glass-blur);
   border-bottom-color: rgba(255, 255, 255, 0.06);
 }
+
+/* ============================================
+   SKIP LINK + SCROLL PROGRESS
+   ============================================ */
+
+/* Keyboard-only "skip to content" — hidden until focused. */
+.skip-link {
+  position: fixed;
+  top: 0;
+  left: var(--space-md);
+  z-index: 210;
+  padding: 0.6rem 1rem;
+  background: var(--surface-container-highest);
+  color: var(--on-surface);
+  font-size: 0.85rem;
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  transform: translateY(-130%);
+  transition: transform var(--transition-fast);
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+/* Thin gradient scroll-progress bar pinned to the top. */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 200;
+  background: var(--gradient-silk);
+  transform: scaleX(0);
+  transform-origin: left;
+  pointer-events: none;
+}

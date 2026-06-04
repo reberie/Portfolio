@@ -3,6 +3,7 @@ import Timeline from '@/components/Timeline';
 import ProjectCard from '@/components/ProjectCard';
 import ContactSection from '@/components/ContactSection';
 import SocialLinks from '@/components/SocialLinks';
+import JsonLd from '@/components/JsonLd';
 import { EXPERIENCE, PROJECTS, SKILLS, SOCIALS } from '@/lib/content';
 import { ArrowRightIcon, UserIcon } from '@/components/icons';
 
@@ -30,10 +31,7 @@ export default function Home() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
-      />
+      <JsonLd data={personSchema} />
 
       {/* Hero — copy anchored left, 3D object to the right */}
       <section className="hero">
