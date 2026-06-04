@@ -1,6 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
+import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import CanvasErrorBoundary from './CanvasErrorBoundary';
 
@@ -15,6 +16,9 @@ const SceneBackground = dynamic(() => import('@/three/SceneBackground'), { ssr: 
  */
 export default function Background() {
   const [enabled, setEnabled] = useState(false);
+  const pathname = usePathname();
+  // Reading-heavy routes get a lighter scene (fewer points, no bloom).
+  const lite = pathname !== '/';
 
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -28,7 +32,7 @@ export default function Background() {
 
   return (
     <CanvasErrorBoundary>
-      <SceneBackground />
+      <SceneBackground lite={lite} />
     </CanvasErrorBoundary>
   );
 }

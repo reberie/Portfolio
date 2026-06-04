@@ -102,7 +102,7 @@ export const PROJECTS: Project[] = [
       'A cross-platform quit-vaping tracker published on the App Store. Designed, built, and shipped end-to-end.',
     tags: ['React Native', 'Expo', 'App Store'],
     image: {
-      src: '/puffzero-screenshot.png',
+      src: '/puffzero-screenshot.webp',
       alt: 'PuffZero app banner',
       width: 1280,
       height: 720,

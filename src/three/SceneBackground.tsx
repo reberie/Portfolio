@@ -185,7 +185,7 @@ function World({ scroll, count }: { scroll: ScrollRef; count: number }) {
   );
 }
 
-export default function SceneBackground() {
+export default function SceneBackground({ lite = false }: { lite?: boolean }) {
   const [ready, setReady] = useState(false);
   // Stop the render loop entirely while the tab is hidden (saves battery/GPU).
   const [frameloop, setFrameloop] = useState<'always' | 'never'>('always');
@@ -197,10 +197,11 @@ export default function SceneBackground() {
     return () => document.removeEventListener('visibilitychange', onVisibility);
   }, []);
 
-  // Lighter load on small screens.
+  // Lighter load on small screens, and on reading-heavy routes (`lite`), where
+  // the scene is just ambient backdrop behind dense copy.
   const isMobile =
     typeof window !== 'undefined' && window.matchMedia('(max-width: 768px)').matches;
-  const count = isMobile ? 1500 : 3200;
+  const count = lite ? (isMobile ? 800 : 1600) : isMobile ? 1500 : 3200;
   const dpr: [number, number] = isMobile ? [1, 1.5] : [1, 2];
 
   return (
@@ -216,16 +217,24 @@ export default function SceneBackground() {
     >
       <Suspense fallback={null}>
         <World scroll={scroll} count={count} />
-        <EffectComposer>
-          <Bloom
-            intensity={0.8}
-            luminanceThreshold={0.15}
-            luminanceSmoothing={0.25}
-            mipmapBlur
-            radius={0.7}
-          />
-          <Vignette eskil={false} offset={0.3} darkness={0.85} />
-        </EffectComposer>
+        {/* Bloom is the most expensive pass — drop it on reading-heavy routes,
+            keeping only the cheap vignette there. */}
+        {lite ? (
+          <EffectComposer>
+            <Vignette eskil={false} offset={0.3} darkness={0.85} />
+          </EffectComposer>
+        ) : (
+          <EffectComposer>
+            <Bloom
+              intensity={0.8}
+              luminanceThreshold={0.15}
+              luminanceSmoothing={0.25}
+              mipmapBlur
+              radius={0.7}
+            />
+            <Vignette eskil={false} offset={0.3} darkness={0.85} />
+          </EffectComposer>
+        )}
       </Suspense>
     </Canvas>
   );
