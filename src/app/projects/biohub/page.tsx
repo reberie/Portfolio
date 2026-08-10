@@ -11,7 +11,7 @@ const schema = {
       name: 'BioHub',
       description:
         'A native iOS health app that helps users make sense of their health data.',
-      author: { '@type': 'Person', name: 'Buianto Sodnomov', url: `${SITE}/` },
+      author: { '@type': 'Person', name: 'Buianto (Ben) Sodnomov', url: `${SITE}/` },
       url: `${SITE}/projects/biohub/`,
     },
     {
@@ -32,15 +32,15 @@ const schema = {
 export const metadata: Metadata = {
   title: 'BioHub',
   description:
-    'Case study: BioHub, an iOS health app built with Swift and SwiftUI. Built by Buianto Sodnomov.',
+    'Case study: BioHub, an iOS health app built with Swift and SwiftUI. Built by Buianto (Ben) Sodnomov.',
   alternates: { canonical: '/projects/biohub' },
   openGraph: {
     type: 'article',
     url: '/projects/biohub',
-    title: 'BioHub — Buianto Sodnomov',
+    title: 'BioHub — Buianto (Ben) Sodnomov',
     description: 'Case study: BioHub, an iOS health app built with Swift and SwiftUI.',
     images: [
-      { url: '/og/biohub.png', width: 1200, height: 630, alt: 'BioHub — Buianto Sodnomov' },
+      { url: '/og/biohub.png', width: 1200, height: 630, alt: 'BioHub — Buianto (Ben) Sodnomov' },
     ],
   },
   twitter: {

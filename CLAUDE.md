@@ -1,4 +1,4 @@
-# Buianto Sodnomov — Portfolio (CLAUDE.md)
+# Buianto (Ben) Sodnomov — Portfolio (CLAUDE.md)
 
 A cinematic 3D developer portfolio. Statically exported Next.js, deployed to
 GitHub Pages at https://buiantosodnomov.com.

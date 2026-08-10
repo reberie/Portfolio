@@ -10,7 +10,8 @@ import { ArrowRightIcon, UserIcon } from '@/components/icons';
 const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
-  name: 'Buianto Sodnomov',
+  name: 'Buianto (Ben) Sodnomov',
+  alternateName: 'Ben Sodnomov',
   url: 'https://buiantosodnomov.com/',
   image: 'https://buiantosodnomov.com/og-image.png',
   jobTitle: 'Software Developer',
@@ -73,7 +74,7 @@ export default function Home() {
         <div className="container">
           <span className="label fade-in">Profile</span>
           <p className="intro__lead fade-in">
-            I&apos;m Buianto — a Toronto-based software developer. I build mobile apps and
+            I&apos;m Buianto (Ben) — a Toronto-based software developer. I build mobile apps and
             full-stack systems, and I care about the full arc: from the first sketch to
             production.
           </p>

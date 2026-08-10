@@ -26,7 +26,7 @@ export default function Nav() {
     <nav className={`nav${scrolled || open ? ' nav--scrolled' : ''}`}>
       <div className="nav__inner">
         <Link href="/" className="nav__logo" onClick={close}>
-          Buianto Sodnomov
+          Buianto (Ben) Sodnomov
         </Link>
 
         <div className={`nav__links${open ? ' open' : ''}`}>
