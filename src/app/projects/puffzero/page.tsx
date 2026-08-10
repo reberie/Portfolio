@@ -16,7 +16,7 @@ const schema = {
       applicationCategory: 'HealthApplication',
       operatingSystem: 'iOS, Android',
       url: APP_STORE_URL,
-      author: { '@type': 'Person', name: 'Buianto Sodnomov', url: `${SITE}/` },
+      author: { '@type': 'Person', name: 'Buianto (Ben) Sodnomov', url: `${SITE}/` },
     },
     {
       '@type': 'BreadcrumbList',
@@ -36,16 +36,16 @@ const schema = {
 export const metadata: Metadata = {
   title: 'PuffZero',
   description:
-    'Case study: PuffZero, a cross-platform quit-vaping tracker app published on the App Store. Built by Buianto Sodnomov.',
+    'Case study: PuffZero, a cross-platform quit-vaping tracker app published on the App Store. Built by Buianto (Ben) Sodnomov.',
   alternates: { canonical: '/projects/puffzero' },
   openGraph: {
     type: 'article',
     url: '/projects/puffzero',
-    title: 'PuffZero — Buianto Sodnomov',
+    title: 'PuffZero — Buianto (Ben) Sodnomov',
     description:
       'Case study: PuffZero, a cross-platform quit-vaping tracker app published on the App Store.',
     images: [
-      { url: '/og/puffzero.png', width: 1200, height: 630, alt: 'PuffZero — Buianto Sodnomov' },
+      { url: '/og/puffzero.png', width: 1200, height: 630, alt: 'PuffZero — Buianto (Ben) Sodnomov' },
     ],
   },
   twitter: {

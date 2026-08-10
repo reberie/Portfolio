@@ -6,16 +6,16 @@ import { EXPERIENCE } from '@/lib/content';
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'About Buianto Sodnomov — a software developer based in Toronto building mobile apps and full-stack systems. Experience, education, and background.',
+    'About Buianto (Ben) Sodnomov — a software developer based in Toronto building mobile apps and full-stack systems. Experience, education, and background.',
   alternates: { canonical: '/about' },
   openGraph: {
     type: 'profile',
     url: '/about',
-    title: 'About — Buianto Sodnomov',
+    title: 'About — Buianto (Ben) Sodnomov',
     description:
       'Software developer based in Toronto. Building mobile apps and full-stack systems.',
     images: [
-      { url: '/og/about.png', width: 1200, height: 630, alt: 'About — Buianto Sodnomov' },
+      { url: '/og/about.png', width: 1200, height: 630, alt: 'About — Buianto (Ben) Sodnomov' },
     ],
   },
   twitter: {
@@ -35,7 +35,7 @@ export default function About() {
             Developer, builder, recent graduate.
           </h1>
           <p className="about-hero__intro fade-in">
-            I&apos;m Buianto — a software developer based in Toronto. I build mobile apps
+            I&apos;m Buianto (Ben) — a software developer based in Toronto. I build mobile apps
             and full-stack systems, and I care about the full arc: from the first sketch
             to production.
           </p>
